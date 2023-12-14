@@ -1,0 +1,52 @@
+{
+    "name": "phpexperts/postgres-for-laravel",
+    "description": "An ease-of-use library for using PostgreSQL with Laravel.",
+    "keywords": [
+        "postgres",
+        "postgresql",
+        "laravel"
+    ],
+    "homepage": "https://www.phpexperts.pro/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "PHP Experts, Inc.",
+            "homepage": "https://www.phpexperts.pro/"
+        },
+        {
+            "name": "Theodore R. Smith",
+            "homepage": "https://www.linkedin.com/in/tedrsmith"
+        }
+    ],
+    "require": {
+        "php": ">=7.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "phpstan/phpstan": "*",
+        "friendsofphp/php-cs-fixer": "*",
+        "symfony/var-dumper": "*",
+        "povils/phpmnd": "*",
+        "squizlabs/php_codesniffer": "*",
+        "phpexperts/dockerize": "^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "PHPExperts\\PostgresForLaravel\\" : "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": { "PHPExperts\\PostgresForLaravel\\Tests\\" : "tests/" }
+    },
+    "config": {
+        "classmap-authoritative": true,
+        "allow-plugins": {
+            "0.0.0/composer-include-files": true
+        }
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "php install.php"
+        ]
+    }
+}
