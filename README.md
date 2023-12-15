@@ -24,6 +24,13 @@ Postgres' timestamp support is extremely suprior to MySQL's. Yet, Laravel only s
 by default. For best performance -including- both timezone-aware and millisecond resolution timestamps, it is best
 to let POstgres itself handle every table's timestamps. To do this, do the following:
 
+      vendor   |       project        |         created_at         |         updated_at
+    ------------+----------------------+----------------------------+----------------------------
+    phpexperts | simple-dto           | 2020-04-30 23:35:00        | 2023-07-18 19:08:47
+    phpexperts | rest-speaker         | 2023-07-30 09:35:53        | 2023-07-30 09:37:37
+    phpexperts | postgres-for-laravel | 2023-12-14 17:58:46.381623 | 2023-12-14 17:58:46.417537
+
+
 **Automatic Autowiring**
 
 1. Extend every model from PHPExperts\PostgresForLaravel\PostgresModel.

@@ -15,11 +15,11 @@ abstract class PostgresMigrationHelper
             $tables = [$tables];
         }
 
-        foreach ($tables as $table) {
-            DB::transaction(function () use ($table) {
+        DB::transaction(function () use ($tables) {
+            foreach ($tables as $table) {
                 self::addPostgresTimestampsWorker($table);
-            });
-        }
+            }
+        });
     }
 
     /**
@@ -31,16 +31,15 @@ abstract class PostgresMigrationHelper
             $tables = [$tables];
         }
 
-        foreach ($tables as $table) {
-            DB::transaction(function () use ($table) {
+        DB::transaction(function () use ($tables) {
+            foreach ($tables as $table) {
                 $sql = <<<SQL
                 ALTER TABLE $table ALTER COLUMN created_at SET DEFAULT NULL, 
                                    ALTER COLUMN updated_at SET DEFAULT NULL;
                 SQL;
                 DB::statement($sql);
-            });
-        }
-
+            }
+        });
     }
 
     private static function addPostgresTimestampsWorker(string $table): void
@@ -68,6 +67,6 @@ abstract class PostgresMigrationHelper
         EXECUTE PROCEDURE trigger_set_timestamp();
         SQL;
 
-        DB::statement($sql);
+        DB::unprepared($sql);
     }
 }
