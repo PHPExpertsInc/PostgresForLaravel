@@ -61,7 +61,7 @@ class UseNativePostgresTimestamps extends Migration
 
     public function down(): void
     {
-        PostgresMigrationHelper::dropPostgresTimestamps(static::TABLES);
+        PostgresMigrationHelper::dropPostgresTimestamps(static::TABLES, PostgresMigrationHelper::DEFAULT_TIMESTAMPS);
     }
 }
 ```
